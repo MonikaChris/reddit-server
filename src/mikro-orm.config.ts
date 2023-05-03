@@ -1,19 +1,16 @@
 import { __prod__ } from "./constants";
 import { Post } from "./entities/Post";
 import { MikroORM } from "@mikro-orm/core";
-// import path from "path";
-import { Options } from "@mikro-orm/core";
+import path from "path";
 
-  const config: Options = {
+  
+  export default {
     migrations: {
-        path: './migrations', // path to the folder with migrations
-        glob: '!(*.d).{js,ts}', // how to match migration files (all .js and .ts files, but not .d.ts)
+        path: path.join(__dirname, "./migrations"), // path to the folder with migrations
+        pattern: /^[\w-]+\d+\.[tj]s$/, // how to match migration files (all .js and .ts files, but not .d.ts)
     },
     entities: [Post],
-    dbName: 'test',
+    dbName: 'lireddit',
     type: 'postgresql',
-    debug: true,
-    user: 'monika'
-};
-
-export default config;
+    debug: !__prod__,
+} as Parameters<typeof MikroORM.init>[0];
