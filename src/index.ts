@@ -4,7 +4,7 @@ import { __prod__ } from "./constants";
 import { Post } from "./entities/Post";
 import microConfig from "./mikro-orm.config";
 import express from 'express';
-import {ApolloServer} from 'apollo-server-express'; // deprecated
+import {ApolloServer} from 'apollo-server-express';
 import {buildSchema} from 'type-graphql';
 import { HelloResolver } from "./resolvers/hello";
 import { PostResolver } from "./resolvers/post";
@@ -20,7 +20,7 @@ const main = async () => {
       resolvers: [HelloResolver, PostResolver],
       validate: false
     }),
-    context: () => ({ em: orm.em }),
+    context: () => ({ em: orm.em.fork() }),
   });
 
   await apolloServer.start();  
