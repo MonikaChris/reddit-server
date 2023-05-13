@@ -34,7 +34,7 @@ const main = async () => {
   //   res.send("hello");
   // })
 
-  // const post = orm.em.create(Post, {title: 'my first post'});
+  // const post = orm.em.create(Post, { title: 'my first post'  });
   // await orm.em.persistAndFlush(post);
 }; 
 
