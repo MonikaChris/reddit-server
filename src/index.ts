@@ -36,6 +36,7 @@ const main = async () => {
         sameSite: "lax", // csrf
         secure: __prod__ // cookie only works in https
       },
+      saveUninitialized: false,
       secret: 'keyboard cat',
       resave: false,
     })

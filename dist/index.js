@@ -34,6 +34,7 @@ const main = async () => {
             sameSite: "lax",
             secure: constants_1.__prod__
         },
+        saveUninitialized: false,
         secret: 'keyboard cat',
         resave: false,
     }));
